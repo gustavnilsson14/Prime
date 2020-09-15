@@ -1,4 +1,4 @@
-Dockerized golang webserver providing a servicen to calculate the closest previous prime number to a user number.
+Dockerized golang webserver providing a service to calculate the closest previous prime number to a user number.
 
 Requires docker to run.
 Please set your firewall to allow HTTP traffic.
