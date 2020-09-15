@@ -1,0 +1,13 @@
+.outerContainer{
+  margin: 0% auto;
+  width: 320px;
+}
+.resultText{
+  display:none;
+}
+#error{
+  color:red;
+}
+#success{
+  color:green;
+}

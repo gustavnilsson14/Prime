@@ -1,0 +1,7 @@
+Logging hours for sample project
+
+2020-09-10: PoC (and general golang learning) - 1 hour
+2020-09-12: Setting up google cloud since my windows distro cant run docker - 30 min
+2020-09-12: Finished settings for google cloud by using an example webservice - 30 min
+2020-09-13: Setup gin-gonic webserver, and modified a html boilerplate to show the service frontend - 1 hour
+2020-09-15: Finished up go user tests, dockerfile, and result/error messages for the service - 1 hour
