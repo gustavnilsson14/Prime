@@ -8,15 +8,16 @@ import (
 )
 
 var router *gin.Engine
+var webDirectory = "./web"
+var apiPath = "/api"
+var port = ":80"
 
 func main() {
 	router = gin.Default()
 
-	//router.Static("/web", "./web")
-	router.Use(static.Serve("/", static.LocalFile("./web", true)))
-	//router.StaticFile("/web/index.html", "./index.html")
+	router.Use(static.Serve("/", static.LocalFile(webDirectory, true)))
 
-	api := router.Group("/api")
+	api := router.Group(apiPath)
 	{
 		api.GET("/GetPreviousPrime", func(ctx *gin.Context) {
 			
@@ -25,9 +26,13 @@ func main() {
 			})
 		})
 	}
-	router.Run(":80")
+	router.Run(port)
 }
 
+/*
+Endpoint for the /api/GetPreviousPrime method
+Responds with the closest previous prime to the client, or with "0" in case there is an error
+*/
 func GetAndPrintClosestPrimeNumber(inputNumber string) string{
 	i, err := strconv.ParseInt(inputNumber, 10, 64)
 	if i < 2 || err != nil{
@@ -39,10 +44,12 @@ func GetAndPrintClosestPrimeNumber(inputNumber string) string{
 		return "0";
 	}
 	primeNumber := GetPrimeLowerThan(bignum)
-	//primeNumber.SetString(inputNumber, 10) //base 10
 	return fmt.Sprintf("%d", primeNumber)
 }
 
+/*
+The big.int argument is reduced by 1, and then checked with ProbablyPrime with the highest accuracy until the closest previous prime is found, then returns than number
+*/
 func GetPrimeLowerThan(number *big.Int) *big.Int {
     isPrime := false
 	for isPrime == false{
